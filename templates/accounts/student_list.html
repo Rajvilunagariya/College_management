@@ -1,0 +1,40 @@
+{# templates/accounts/student_list.html #}
+
+{% extends 'base.html' %}
+{% block title %}Student List{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Student List</h1>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if students %}
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Date Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ student.username }}</td>
+                            <td>{{ student.get_full_name|default:"N/A" }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.date_joined|date:"Y-m-d" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>There are no students in the system.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+# == Core Framework ==
+django
+gunicorn          # Production WSGI server
+python-dotenv     # For managing .env file (secrets)
+
+# == REST API (Highly Recommended) ==
+djangorestframework
+djangorestframework-simplejwt  # For token authentication (JWT)
+django-cors-headers          # For allowing a separate frontend to connect
+django-background-tasks
+# == Database Connector (Choose ONE and uncomment) ==
+# psycopg2-binary    # For PostgreSQL
+# mysqlclient        # For MySQL
+
+# == File & Image Handling ==
+Pillow             # For ImageField (student/faculty profile pics)
+
+# == Admin & Data Utilities ==
+django-import-export  # For bulk upload (students, courses, grades)
+openpyxl            # Required by django-import-export for .xlsx
+pytz

@@ -1,0 +1,11 @@
+Welcome to the College Management System!
+
+We are thrilled to have you join our community. This system will be your central hub for all academic information, including courses, attendance, and results.
+
+Please take a moment to familiarize yourself with your dashboard after logging in.
+
+If you have any questions, do not hesitate to contact the administration.
+
+Best regards,
+The College Management Team
+

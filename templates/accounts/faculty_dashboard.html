@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Faculty Dashboard{% endblock %}
+{% block content %}
+    <h1>Faculty Dashboard</h1>
+    <p>Welcome, Professor! Manage your courses and students here.</p>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Academic Management</div>
+                <div class="card-body">
+                    <h5 class="card-title">Manage Courses</h5>
+                    <p class="card-text">Add new courses to the system.</p>
+                    <a href="{% url 'add_course' %}" class="btn btn-primary">Add Course</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

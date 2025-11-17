@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}My Profile{% endblock %}
+{% block content %}
+    <h1>My Profile</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Welcome, {{ profile.user.get_full_name|default:profile.user.username }}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Username:</strong> {{ profile.user.username }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ profile.user.email }}</li>
+                <li class="list-group-item"><strong>Enrolled Course:</strong> 
+                    {% if profile.course %}
+                        {{ profile.course.name }} ({{ profile.course.department.name }})
+                    {% else %}
+                        Not assigned to a course yet.
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="{% url 'student_dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock %}
+{% block content %}
+    <h1>Student Dashboard</h1>
+    <p>Welcome, Student! View your attendance and results here.</p>
+
+    <div class="card">
+        <div class="card-header">
+            My Profile
+        </div>
+        <div class="card-body">
+            <p>View your profile details, including your enrolled course.</p>
+            <a href="{% url 'student_profile' %}" class="btn btn-primary">View My Profile</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Courses</h5>
+                    <p class="card-text fs-1 fw-bold">{{ course_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

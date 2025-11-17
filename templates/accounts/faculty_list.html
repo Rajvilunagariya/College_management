@@ -1,0 +1,40 @@
+{# templates/accounts/faculty_list.html #}
+
+{% extends 'base.html' %}
+{% block title %}Faculty List{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Faculty List</h1>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if faculties %}
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Date Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for faculty in faculties %}
+                        <tr>
+                            <td>{{ faculty.username }}</td>
+                            <td>{{ faculty.get_full_name|default:"N/A" }}</td>
+                            <td>{{ faculty.email }}</td>
+                            <td>{{ faculty.date_joined|date:"Y-m-d" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>There are no faculty members in the system.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

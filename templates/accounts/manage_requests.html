@@ -1,0 +1,58 @@
+{# accounts/templates/accounts/manage_requests.html #}
+
+{% extends 'base.html' %}
+{% block title %}Manage Registration Requests{% endblock %}
+{% block content %}
+    <h1>Manage Registration Requests</h1>
+    <div class="card">
+        <div class="card-body">
+            {% if requests %}
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Date Requested</th>
+                            <th>Actions & Scheduling</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for req in requests %}
+                        <tr>
+                            <td>{{ req.username }}</td>
+                            <td>{{ req.email }}</td>
+                            <td>{{ req.get_user_type_display }}</td>
+                            <td>{{ req.created_at|date:"Y-m-d H:i" }}</td>
+                            <td>
+                                <!-- START OF UPDATED FORM SECTION -->
+                                <form action="{% url 'approve_request' req.id %}" method="post" class="mb-2">
+                                    {% csrf_token %}
+                                    <div class="input-group input-group-sm">
+                                        <input type="date" name="schedule_date" class="form-control" title="Schedule Date">
+                                        <input type="time" name="schedule_time" class="form-control" title="Schedule Time">
+                                        <button type="submit" class="btn btn-success">Approve</button>
+                                    </div>
+                                </form>
+                                <form action="{% url 'reject_request' req.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-group input-group-sm">
+                                        <input type="date" name="schedule_date" class="form-control" title="Schedule Date">
+                                        <input type="time" name="schedule_time" class="form-control" title="Schedule Time">
+                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                    </div>
+                                </form>
+                                <small class="text-muted">Leave blank to send immediately.</small>
+                                <!-- END OF UPDATED FORM SECTION -->
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>There are no pending registration requests.</p>
+            {% endif %}
+        </div>
+    </div>
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

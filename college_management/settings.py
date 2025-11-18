@@ -26,7 +26,16 @@ SECRET_KEY = 'django-insecure-q0%0z&kt_(zx7r&#1kwdx!l=x0f%b3^x&x045&rd4%9nkb5e=7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "college-management-bmic.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://college-management-bmic.onrender.com",
+    "https://college-management-bmic.onrender.com",
+]
 
 
 # Application definition
